@@ -1,39 +1,73 @@
-# grid-flows
-View flow of national electric grid generation and demand over time.
-
-# Project Overview
+# Grid Flows
 
 
-## Project Name
+![you wanted a gif, you got a gif](https://media.giphy.com/media/wvurizcBk3tmM/giphy.gif)
 
-**Project decription:** Use this section to describe your project and what API or APIs it will utilize. List any relevant links, including the url to your live, deployed site.
+
+**Project decription:** View the flow of national electric grid generation and demand over time. Hourly -> monthly timeframe, animated and visualized with d3.js.
+
 
 ## API Snippet
+```
+{
+    "request": {
+        "command": "series",
+        "series_id": "EBA.MIDA-ALL.D.H"
+    },
+    "series": [
+        {
+            "series_id": "EBA.MIDA-ALL.D.H",
+            "name": "Demand for Mid-Atlantic (region), hourly - UTC time",
+            "units": "megawatthours",
+            "f": "H",
+            "description": "Timestamps follow the ISO8601 standard (https://en.wikipedia.org/wiki/ISO_8601). Hourly representations are provided in Universal Time.",
+            "start": "20150701T05Z",
+            "end": "20200123T19Z",
+            "updated": "2020-01-23T14:46:15-0500",
+            "data": [
+                [
+                    "20200123T19Z",
+                    98243
+                ],
+                [
+                    "20200123T18Z",
+                    99676
+                ],
+                [
+                    "20200123T17Z",
+                    101703
+                ],
+                [
+                    "20200123T16Z",
+                    105125
+                ],
+                [
+                    "20200123T15Z",
+                    108365
+                ]
+		.
+		.
+		.
+```
 
-```
-Paste a snippet received from a call to your API that shows the shape of the data
-```
 
 ## Wireframes
 
 Display all wireframes here with any neccessary descriptions.
 
+
 ### MVP
 
-Carefully decided what is placed into your MVP as the client will expect this functionality to be implemented upon project completion.  
+- Allow queries of selected time / geographic area
+- Tabular display of supply / demand data
 
-#### MVP EXAMPLE:
-- Find and use external api 
-- Render data on page 
-- Allow user to choose favorites 
-- Save their choices in firebase
 
 ### Post-MVP
 
-List any additional functionality you would like to implement once MVP has been reached.
+- Animation showing demand changing over time / geographic areas
+- Demand forecasting model and predictions
+- Model explanation
 
-#### PostMVP EXAMPLE:
-- Add user auth
 
 ## React Component Hierarchy
 
