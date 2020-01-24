@@ -79,11 +79,12 @@
 | --- | --- | --- |
 | App | Uses api-helper.js and search terms (in state) to retrieve, filter, and pass data | Functional |
 | Header | Has the browsing / search elements and site navigation | Stateless |
-| Browse | User selects dataset, timeframe, and region here | Stateless |
+| QuerySettings | User selects dataset, timeframe, and region here | Stateless |
 | Footer | Social media / professional links | Stateless |
 | Main | Houses data display and map display through React Router and distributes data received from the API call (PMVP: and animation settings) in state | Functional |
 | DataDisplay | Displays selected data in tabular and / or chart format | Stateless |
 | Map | Displays selected data on regional / national map (PMVP: And animates power flow) | Stateless |
+| Region | Renders single region of US | Stateless |
 | (Animation) | Select animation speed / style | Stateless |
 | (Prediction) | Makes predictions of future power usage from past data | Stateless |
 
@@ -96,7 +97,7 @@
 
 | Component | Priority | Estimated Time (hrs) | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Working API Calls | H | 2 | | |
+| Working API Calls | H | 2 | 1.5 | |
 | Component Hierarchy / Routing | H | 4 | | |
 | Region / Data Type / Date Selection | H | 2 | | |
 | Tabular Data Summary | H | 3 | | |
@@ -117,7 +118,7 @@
 |Jan 28th| Render Map (MVP) | Incomplete
 |Jan 29th| Animated Power Flows | Incomplete
 |Jan 30th| Supply / Demand prediction | Incomplete
-|Jan 31tst| Present | Incomplete
+|Jan 31st| Present | Incomplete
 
 ## Additional Libraries
 
@@ -125,6 +126,7 @@
 - React Router - URL-based conditional rendering
 - d3.js - Pretty map views
 - chroma - Color palettes
+- dotenv - Hide keys
 
 (PMVP)
 - Stdlib-js - Better chart plotting
