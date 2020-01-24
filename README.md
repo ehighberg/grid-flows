@@ -113,7 +113,7 @@
 
 |  Day | Deliverable | Status
 |---|---| ---|
-|Jan 24th| Project Pitch / Wireframes / Priority Matrix / Component Hierarchy | Incomplete
+|Jan 24th| Project Pitch / Wireframes / Priority Matrix / Component Hierarchy | Complete
 |Jan 27th| User-selected API calls, Render basic info | Incomplete
 |Jan 28th| Render Map (MVP) | Incomplete
 |Jan 29th| Animated Power Flows | Incomplete
