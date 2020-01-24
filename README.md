@@ -4,7 +4,7 @@
 ![you wanted a gif, you got a gif](https://media.giphy.com/media/wvurizcBk3tmM/giphy.gif)
 
 
-**Project decription:** View the flow of national electric grid generation and demand over time. Hourly -> monthly timeframe, animated and visualized with d3.js.
+**Project decription:** View the flow of national electric grid generation and demand over time. Hourly -> monthly timeframe, animated and visualized with d3.js. Data courtesy of the [Energy Information Administration](https://www.eia.gov/opendata/qb.php?category=2122628).
 
 
 ## API Snippet
@@ -58,6 +58,7 @@
 
 ### MVP
 
+- Landing page showing current regional consumption
 - Allow queries of selected time / geographic area
 - Tabular and map display of supply / demand data
 
@@ -67,6 +68,7 @@
 - Animation showing demand changing over time / geographic areas
 - Demand forecasting model and predictions
 - Model explanation
+- Incorporate weather data into model
 
 
 ## React Component Hierarchy
@@ -90,13 +92,21 @@
 
 ## Priority Matrix
 
-Include an image of your Priority Matrix (X is time and Y is priority)
+![priority matrix](https://i.imgur.com/3i0qW07.png)
 
 ## Timeframes
 
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-
+| Working API Calls | H | 2 | | |
+| Component Hierarchy / Routing | H | 4 | | |
+| Region / Data Type / Date Selection | H | 2 | | |
+| Tabular Data Summary | H | 3 | | |
+| Chart Display | H | 2 | | |
+| Map Display | H | 6 | | |
+| Frame-by-frame Power Visual | M | 4 | | |
+| Animated Power Flows | M | 4 | | |
+| Predictive Power Modeling | L | 8 | | |
 
 
 ## Project Schedule
@@ -112,15 +122,15 @@ Include an image of your Priority Matrix (X is time and Y is priority)
 
 ## Additional Libraries
 
-Axios - API requests
-React Router - URL-based conditional rendering
-d3.js - Pretty map views
-chroma - Color palettes
+- Axios - API requests
+- React Router - URL-based conditional rendering
+- d3.js - Pretty map views
+- chroma - Color palettes
 
 (PMVP)
-Stdlib-js - Better chart plotting
-Zebras - Tabular data manipulation
-machinelearn.js - C++ based algorithms
+- Stdlib-js - Better chart plotting
+- Zebras - Tabular data manipulation
+- machinelearn.js - C++ based algorithms
 
 
 ## Issues and Resolutions
