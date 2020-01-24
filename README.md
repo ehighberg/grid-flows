@@ -1,8 +1,6 @@
 # Grid Flows
 
 
-![you wanted a gif, you got a gif](https://media.giphy.com/media/wvurizcBk3tmM/giphy.gif)
-
 
 **Project decription:** View the flow of national electric grid generation and demand over time. Hourly -> monthly timeframe, animated and visualized with d3.js. Data courtesy of the [Energy Information Administration](https://www.eia.gov/opendata/qb.php?category=2122628).
 
@@ -96,7 +94,7 @@
 
 ## Timeframes
 
-| Component | Priority | Estimated Time | Time Invested | Actual Time |
+| Component | Priority | Estimated Time (hrs) | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
 | Working API Calls | H | 2 | | |
 | Component Hierarchy / Routing | H | 4 | | |
@@ -107,6 +105,7 @@
 | Frame-by-frame Power Visual | M | 4 | | |
 | Animated Power Flows | M | 4 | | |
 | Predictive Power Modeling | L | 8 | | |
+| Total | H | 35 | | |
 
 
 ## Project Schedule
