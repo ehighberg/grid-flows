@@ -71,16 +71,21 @@ Display all wireframes here with any neccessary descriptions.
 
 ## React Component Hierarchy
 
-Include an image of your component hierarchy that shows the data flow and architectural design of your app.
+![component hierarchy](https://i.imgur.com/rDLmE4k.png)
 
 ## Components
 
-Based on the initial logic defined in the previous section, try to breakdown the logic further into stateless/stateful components. 
-
 | Component | Description |Type |
 | --- | --- | --- |
-| Header | The Header receives props that render multiple nav titles and links | Functional |
-| Main | This component houses multiple rendered views through React Router and controls data received from the initial API call in state | Class |
+| App | Uses api-helper.js and search terms (in state) to retrieve, filter, and pass data | Functional |
+| Header | Has the browsing / search elements and site navigation | Stateless |
+| Browse | User selects dataset, timeframe, and region here | Stateless |
+| Footer | Social media / professional links | Stateless |
+| Main | Houses data display and map display through React Router and distributes data received from the API call (PMVP: and animation settings) in state | Functional |
+| DataDisplay | Displays selected data in tabular and / or chart format | Stateless |
+| Map | Displays selected data on regional / national map (PMVP: And animates power flow) | Stateless |
+| (Animation) | Select animation speed / style | Stateless |
+| (Prediction) | Makes predictions of future power usage from past data | Stateless |
 
 ## Priority Matrix
 
