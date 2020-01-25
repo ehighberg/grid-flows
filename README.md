@@ -97,7 +97,7 @@
 
 | Component | Priority | Estimated Time (hrs) | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Working API Calls | H | 2 | 1 | |
+| Working API Calls | H | 2 | 3 | |
 | Component Hierarchy / Routing | H | 4 | 2.25 | |
 | Region / Data Type / Date Selection | H | 2 | 2.5 | |
 | Tabular Data Summary | H | 3 | | |
@@ -114,7 +114,7 @@
 |  Day | Deliverable | Status
 |---|---| ---|
 |Jan 24th| Project Pitch / Wireframes / Priority Matrix / Component Hierarchy | Complete
-|Jan 27th| User-selected API calls, Render basic info | Incomplete
+|Jan 27th| API calls, Render basic info | Incomplete
 |Jan 28th| Render Map (MVP) | Incomplete
 |Jan 29th| Animated Power Flows | Incomplete
 |Jan 30th| Supply / Demand prediction | Incomplete
@@ -139,6 +139,8 @@
 
 Learning the libraries: d3 is the only one that I need to get working for this, the other ones are more nice-to-have. User input area might be too cramped and need to be moved to its own route.
 
+I decided to load all the API data on initial page load into a single nested object. It turned out that navigating nested objects is complicated and messy, and took about 2 hours to get right.
+
 
 ## Code Snippet
 
@@ -151,4 +153,4 @@ function reverse(string) {
 ```
 
 ## Change Log
- Use this section to document what changes were made in your overall planning and the reasoning behind those changes.  
+- [2020-01-25]: Loading all API results on initial page landing
