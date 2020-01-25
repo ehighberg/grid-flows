@@ -98,7 +98,7 @@
 | Component | Priority | Estimated Time (hrs) | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
 | Working API Calls | H | 2 | 3 | |
-| Component Hierarchy / Routing | H | 4 | 2.25 | |
+| Component Hierarchy / Routing | H | 4 | 4 | |
 | Region / Data Type / Date Selection | H | 2 | 2.5 | |
 | Tabular Data Summary | H | 3 | | |
 | Chart Display | H | 2 | | |
@@ -153,4 +153,5 @@ function reverse(string) {
 ```
 
 ## Change Log
+- [2020-01-24]: Dataset selection moved to own page.
 - [2020-01-25]: Loading all API results on initial page landing
