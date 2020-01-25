@@ -99,7 +99,7 @@
 | --- | :---: |  :---: | :---: | :---: |
 | Working API Calls | H | 2 | 1 | |
 | Component Hierarchy / Routing | H | 4 | 2.25 | |
-| Region / Data Type / Date Selection | H | 2 | 1.25 | |
+| Region / Data Type / Date Selection | H | 2 | 2.5 | |
 | Tabular Data Summary | H | 3 | | |
 | Chart Display | H | 2 | | |
 | Map Display | H | 6 | | |
