@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom'
 import moment from 'moment'
 
 import { mean } from '../services/stats'
-import { regionCodes, ioCodes, timeLocaleCodes, fetchAllPowerSeries , testApi} from '../services/api-helper'
+import { regionCodes, ioCodes, makeSeriesDict } from '../services/api-helper'
 
 import MapView from '../screens/MapView'
 import QuerySettings from '../screens/QuerySettings'
@@ -14,7 +14,6 @@ import Summary from './Summary'
 const minDate = '2015-07-01'
 const maxDate = moment().subtract(1, 'days').format('YYYY-MM-DD')
 
-// testApi()
 
 
 const Main = props => {
@@ -37,7 +36,7 @@ const Main = props => {
   }
 
   const getAPIResponses = async () => {
-    const response = await fetchAllPowerSeries()
+    const response = await makeSeriesDict()
     setAllPowerSeries(response)
   }
 
@@ -54,15 +53,15 @@ const Main = props => {
 
 
     console.log(allPowerSeries)
-    console.log(typeof allPowerSeries.Local.Demand)
-    console.log(allPowerSeries.Local.Demand)
-    console.log(typeof allPowerSeries.Local.Demand.California)
-    console.log(allPowerSeries.Local.Demand.California)
+    console.log(typeof allPowerSeries.Demand)
+    console.log(allPowerSeries.Demand)
+    console.log(typeof allPowerSeries.Demand.California)
+    console.log(allPowerSeries.Demand.California)
 
 
     return (
       <main>
-        <p>{allPowerSeries.Local.Demand.Texas}</p>
+        <p>{allPowerSeries.Demand.Texas.name}</p>
         <Route exact path='/' component={MapView} />
         {// <Route exact path='/chart' component={Chart} />
       }
