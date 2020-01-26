@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import moment from 'moment'
 
-import { mean } from '../services/stats'
 import { regionCodes, ioCodes, makeSeriesDict } from '../services/api-helper'
 
 import MapView from '../screens/MapView'
@@ -18,7 +17,8 @@ const maxDate = moment().subtract(1, 'days').format('YYYY-MM-DD')
 
 const Main = props => {
 
-  const [ allPowerSeries, setAllPowerSeries ] = useState(null)
+  const [ demandSeries, setDemandSeries ] = useState({})
+  const [ supplySeries, setSupplySeries ] = useState({})
 
   const [ formValues , setFormValues ] = useState({
     regionSelect: 'All Regions',
@@ -36,32 +36,29 @@ const Main = props => {
   }
 
   const getAPIResponses = async () => {
-    const response = await makeSeriesDict()
-    setAllPowerSeries(response)
+    const demandRes = await makeSeriesDict('Demand')
+    setDemandSeries(demandRes)
+    const supplyRes = await makeSeriesDict('Supply')
+    setSupplySeries(supplyRes)
   }
 
   useEffect(() => { getAPIResponses() }
     , [])
 
 
-  if (!allPowerSeries) {
-    console.log(allPowerSeries)
+  if (!demandSeries.California) {
     return (
       <h1>Loading...</h1>
     )
   } else {
 
 
-    console.log(allPowerSeries)
-    console.log(typeof allPowerSeries.Demand)
-    console.log(allPowerSeries.Demand)
-    console.log(typeof allPowerSeries.Demand.California)
-    console.log(allPowerSeries.Demand.California)
+    console.log(demandSeries)
 
 
     return (
       <main>
-        <p>{allPowerSeries.Demand.Texas.name}</p>
+        <p>{demandSeries.California.name}</p>
         <Route exact path='/' component={MapView} />
         {// <Route exact path='/chart' component={Chart} />
       }
@@ -73,7 +70,7 @@ const Main = props => {
           />
         </Route>
 
-        <Summary />
+        <Summary demand={demandSeries}/>
       </main>
     )
   }

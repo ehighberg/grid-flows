@@ -50,27 +50,22 @@ const fetchSetOfRegionalData = async (io) => {
   return response.data.series
 }
 
-export const makeSeriesDict = async () => {
-  const demandData = await fetchSetOfRegionalData('Demand')
-  const supplyData = await fetchSetOfRegionalData('Supply')
+export const makeSeriesDict = async (io) => {
+  const ioData = await fetchSetOfRegionalData(io)
 
-  const seriesDict= {
-      Demand: Object.assign({}, regionCodes),
-      Supply: Object.assign({}, regionCodes)
-  }
+  const seriesDict = Object.assign({}, regionCodes)
 
-  const assignRegions = (data, io) => {
+  const assignRegions = (data) => {
     data.forEach(series => {
-      Object.keys(seriesDict[io]).forEach(region => {
+      Object.keys(seriesDict).forEach(region => {
           if (series.name.includes(region)) {
-            seriesDict[io][region] = series
+            seriesDict[region] = series
           }
       })
     })
   }
 
-  assignRegions(demandData, 'Demand')
-  assignRegions(supplyData, 'Supply')
+  assignRegions(ioData, io)
   return seriesDict
 }
 
@@ -78,5 +73,3 @@ const testRegionFetch = async () => {
   const allData = await makeSeriesDict()
   console.log(allData)
 }
-
-testRegionFetch()

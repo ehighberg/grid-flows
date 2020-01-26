@@ -1,3 +1,3 @@
 export const mean = values => {
-  return values.reduce((a, b) => a + b) / values.length
+  return Math.floor(values.reduce((a, b) => a + b) / values.length * 100) / 100
 }
