@@ -1,0 +1,57 @@
+:root {
+  --bg-one: #0e79b2;
+  --text-one: #ffbf00;
+}
+
+a {
+  color: var(--text-one);
+  text-decoration: none;
+  padding: 0.3vh 1vw;
+  border: 2px solid #8bc34a;
+  border-radius: 0.3em;
+  margin: 0 1vw;
+}
+
+footer {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  background-color: var(--bg-one);
+  color: var(--text-one);
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+footer a {
+  padding: 0.5vh 1vw;
+  border: none;
+}
+
+footer span {
+  margin: auto 0;
+}
+
+form {
+  text-align: center;
+}
+
+form * {
+  margin: 1vh 1vw;
+}
+
+h3 {
+  margin: 1vh auto 1vh 2vw;
+}
+
+header {
+  font-size: 1em;
+  background-color: var(--bg-one);
+  color: var(--text-one);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+nav {
+  margin: auto 2vw auto auto;
+}
