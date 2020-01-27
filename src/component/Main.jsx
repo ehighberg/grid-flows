@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import moment from 'moment'
 
-import { saxpy } from '@stdlib/blas/base'
-import { Float32Array } from '@stdlib/array'
-
 
 import { regionCodes, ioCodes, makeSeriesDict } from '../services/api-helper'
-import { extractValues } from '../services/stats-helper'
+import { extractValues, extractAllRegionValues } from '../services/seriesParsing'
+
 
 import MapView from '../screens/MapView'
 import QuerySettings from '../screens/QuerySettings'
@@ -37,23 +35,6 @@ const Main = props => {
       ...formValues,
       [e.target.name]: e.target.value
     })
-  }
-
-  const extractAllRegionValues = ioSeries => {
-    const seriesLength = ioSeries.California.data.length
-
-    const accumulator = new Float32Array(seriesLength)
-
-    Object.keys(ioSeries).forEach(region => {
-      const floatyArray = new Float32Array(extractValues(ioSeries[region].data))
-
-      // saxpy is a FORTRAN-based function that adds arrays element-wise
-      // https://stdlib.io/docs/api/v0.0.90/@stdlib/blas/base/saxpy
-
-      saxpy(seriesLength, 1, floatyArray, 1, accumulator, 1)
-    })
-
-    return accumulator
   }
 
   const getAPIResponses = async () => {

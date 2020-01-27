@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { extractValues, mean, stdDev, iqr } from '../services/stats-helper'
+import { mean, stdDev, iqr } from '../services/stats-helper'
+import { extractValues } from '../services/seriesParsing'
 
 const Summary = props => {
 

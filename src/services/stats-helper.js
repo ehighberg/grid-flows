@@ -1,8 +1,3 @@
-export const extractValues = series => {
-  // Takes 2D array, flattens it, and takes every second element
-  return series.flat().filter((value, index) => index % 2 !== 0)
-}
-
 const round = (numToRound, numPlaces) => {
   const powerOf10 = 10 ** numPlaces
   return Math.floor(numToRound * powerOf10) / powerOf10

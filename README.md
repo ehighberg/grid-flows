@@ -102,7 +102,7 @@
 | Region / Data Type / Date Selection | H | 2 | 2.5 | |
 | Tabular Data Summary | H | 3 | 4 | |
 | Chart Display | H | 2 | | |
-| Map Display | H | 6 | | |
+| Map Display | H | 6 | 6 | |
 | Frame-by-frame Power Visual | M | 4 | | |
 | Animated Power Flows | M | 4 | | |
 | Predictive Power Modeling | L | 8 | | |
