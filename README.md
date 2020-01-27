@@ -97,10 +97,10 @@
 
 | Component | Priority | Estimated Time (hrs) | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Working API Calls | H | 2 | 4.5 | |
+| Working API Calls | H | 2 | 5 | |
 | Component Hierarchy / Routing | H | 4 | 4 | |
 | Region / Data Type / Date Selection | H | 2 | 2.5 | |
-| Tabular Data Summary | H | 3 | | |
+| Tabular Data Summary | H | 3 | 4 | |
 | Chart Display | H | 2 | | |
 | Map Display | H | 6 | | |
 | Frame-by-frame Power Visual | M | 4 | | |
@@ -115,7 +115,7 @@
 |---|---| ---|
 |Jan 24th| Project Pitch / Wireframes / Priority Matrix / Component Hierarchy | Complete
 |Jan 27th| API calls, Render basic info | Incomplete
-|Jan 28th| Render Map (MVP) | Incomplete
+|Jan 28th| Render Map, Charts (MVP) | Incomplete
 |Jan 29th| Animated Power Flows | Incomplete
 |Jan 30th| Supply / Demand prediction | Incomplete
 |Jan 31st| Present | Incomplete
@@ -128,18 +128,18 @@
 - chroma - Color palettes
 - dotenv - Hide keys
 - Moment - Easier date handling
+- Stdlib-js, Math.js - Better chart plotting, data manipulation
 
 (PMVP)
-- Stdlib-js - Better chart plotting
 - Zebras - Tabular data manipulation
 - machinelearn.js - C++ based algorithms
 
 
 ## Issues and Resolutions
 
-Learning the libraries: d3 is the only one that I need to get working for this, the other ones are more nice-to-have. User input area might be too cramped and need to be moved to its own route.
-
 I decided to load all the API data on initial page load into a single nested object. It turned out that navigating nested objects is complicated and messy, and took about 2 hours to get right.
+
+Ended up using Stdlib for some math operations that would have been cumbersome to implement by hand (and much slower).
 
 
 ## Code Snippet
@@ -154,4 +154,5 @@ function reverse(string) {
 
 ## Change Log
 - [2020-01-24]: Dataset selection moved to own page.
-- [2020-01-25]: Loading all API results on initial page landing
+- [2020-01-25]: Loading all API results on initial page landing.
+- [2020-01-26]: Using Stdlib-js, Math.js for data wrangling.

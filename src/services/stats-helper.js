@@ -19,7 +19,9 @@ export const mean = values => {
 }
 
 export const stdDev = values => {
+  // Standard Deviation
   // https://wikimedia.org/api/rest_v1/media/math/render/svg/067067e579e43b39ca1e57d9be52bda5b80cd284
+
   const sampleMean = mean(values)
   return round((
     values.reduce((a, b) =>
@@ -30,7 +32,9 @@ export const stdDev = values => {
 }
 
 export const iqr = values => {
+  // Interquartile Range
   // https://en.wikipedia.org/wiki/Interquartile_range
+
   const sortedValues = sortHelper(values)
   const numVals = sortedValues.length
 
