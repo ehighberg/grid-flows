@@ -1,12 +1,17 @@
 import React from 'react'
 
-import { mean } from '../services/stats'
+import { extractValues, mean, stdDev, iqr } from '../services/stats-helper'
 
 const Summary = props => {
+
+  const testData = props.demand.California.data
+
   return (
     <summary>
       <h2>SUMMARY</h2>
-      <p>{mean(props.demand.California.data.flat().filter((value, index) => index % 2 !== 0))}</p>
+      <p>{mean(extractValues(testData))}</p>
+      <p>{stdDev(extractValues(testData))}</p>
+      <p>{iqr(extractValues(testData)).join(', ')}</p>
     </summary>
   )
 }

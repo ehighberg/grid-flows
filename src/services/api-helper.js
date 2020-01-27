@@ -39,6 +39,7 @@ const constructSeriesString = (region, io) => {
 }
 
 const fetchSetOfRegionalData = async (io) => {
+  // API will return multiple series if IDs are joined by ;
   const query = `${base}
     ${Object.keys(regionCodes)
       .map(region => constructSeriesString(region, io))
@@ -55,6 +56,7 @@ export const makeSeriesDict = async (io) => {
 
   const seriesDict = Object.assign({}, regionCodes)
 
+  // Looks through the array returned by the API, and matches each series to its corresponding region in seriesDict
   const assignRegions = (data) => {
     data.forEach(series => {
       Object.keys(seriesDict).forEach(region => {
@@ -67,9 +69,4 @@ export const makeSeriesDict = async (io) => {
 
   assignRegions(ioData, io)
   return seriesDict
-}
-
-const testRegionFetch = async () => {
-  const allData = await makeSeriesDict()
-  console.log(allData)
 }
