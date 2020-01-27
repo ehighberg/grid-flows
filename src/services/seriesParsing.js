@@ -2,6 +2,7 @@ import moment from 'moment'
 import { saxpy } from '@stdlib/blas/base'
 import { Float32Array } from '@stdlib/array'
 
+
 export const extractValues = series => {
   // Takes 2D array, flattens it, and takes every second element
   return series.flat().filter((value, index) => index % 2 !== 0)
@@ -22,4 +23,23 @@ export const extractAllRegionValues = ioSeries => {
   })
 
   return accumulator
+}
+
+export const timeParseData = (series, startDate, endDate) => {
+
+  const startTime = moment(startDate)
+  const endTime = moment(endDate).add(23, 'hours')
+
+  const parsedSeries = Object.assign({}, series)
+
+  parsedSeries.data = series.data.filter(timeValPair => {
+    const parsedTime = moment.parseZone(timeValPair[0])
+    return (( parsedTime >= startTime) && (parsedTime <= endTime))
+  })
+
+  return parsedSeries
+}
+
+export const timeParseAllRegionsData = (serieses, startDate, endDate) => {
+  return ''
 }
