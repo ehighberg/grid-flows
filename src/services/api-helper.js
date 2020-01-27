@@ -5,7 +5,7 @@ dotenv.config()
 
 const api_key = process.env.REACT_APP_EIA_API_KEY
 
-const base=`https://api.eia.gov/series/?api_key=${api_key}&series_id=`
+const base = `https://api.eia.gov/series/?api_key=${api_key}&series_id=`
 
 export const regionCodes = {
   California: 'CAL',
@@ -40,8 +40,7 @@ const constructSeriesString = (region, io) => {
 
 const fetchSetOfRegionalData = async (io) => {
   // API will return multiple series if IDs are joined by ;
-  const query = `${base}
-    ${Object.keys(regionCodes)
+  const query = `${base}${Object.keys(regionCodes)
       .map(region => constructSeriesString(region, io))
       .join(';')
     }`

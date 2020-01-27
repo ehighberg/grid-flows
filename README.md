@@ -97,7 +97,7 @@
 
 | Component | Priority | Estimated Time (hrs) | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Working API Calls | H | 2 | 5 | |
+| Working API Calls | H | 2 | 6 | |
 | Component Hierarchy / Routing | H | 4 | 4 | |
 | Region / Data Type / Date Selection | H | 2 | 2.5 | |
 | Tabular Data Summary | H | 3 | 4 | |

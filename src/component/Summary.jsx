@@ -8,7 +8,7 @@ const Summary = props => {
 
   return (
     <summary>
-      <h2>Summary data for </h2>
+      <h2>Summary data for {props.settings.regionSelect}</h2>
       <p>{mean(testData)}</p>
       <p>{stdDev(testData)}</p>
       <p>{iqr(testData).join(', ')}</p>

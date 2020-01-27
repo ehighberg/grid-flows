@@ -49,7 +49,7 @@ const Main = props => {
 
       // saxpy is a FORTRAN-based function that adds arrays element-wise
       // https://stdlib.io/docs/api/v0.0.90/@stdlib/blas/base/saxpy
-      
+
       saxpy(seriesLength, 1, floatyArray, 1, accumulator, 1)
     })
 
