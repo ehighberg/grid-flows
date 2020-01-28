@@ -11,7 +11,7 @@ const Summary = props => {
   const endTimeString = moment(props.settings.endDate).add(23, 'hours').format(timeFormat)
 
   const renderSupplyValue = valueFn => {
-    if (!props.Supply.series_id) {
+    if (!props.Supply.name) {
       return 'Loading...'
     } else {
       return valueFn(extractValues(props.Supply.data))
@@ -20,7 +20,7 @@ const Summary = props => {
 
   const demandData = extractValues(props.Demand.data)
   const [ demLower, demMed, demHigh ] = iqr(demandData)
-  const [ supLower, supMed, supHigh ] = props.Supply.series_id ? iqr(extractValues(props.Supply.data)) : ['Loading...', 'Loading...', 'Loading...']
+  const [ supLower, supMed, supHigh ] = props.Supply.name ? iqr(extractValues(props.Supply.data)) : ['Loading...', 'Loading...', 'Loading...']
 
   return (
     <summary>

@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@stdlib/stdlib": "^0.0.90",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -11,7 +10,6 @@
     "chroma": "^0.0.1",
     "d3": "^5.15.0",
     "dotenv": "^8.2.0",
-    "mathjs": "^6.5.0",
     "moment": "^2.24.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",

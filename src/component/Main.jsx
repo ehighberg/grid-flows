@@ -4,7 +4,7 @@ import moment from 'moment'
 
 
 import { makeSeriesDict } from '../services/api-helper'
-import { fullyParseSeries } from '../services/seriesParsing'
+import { timeParseData } from '../services/seriesParsing'
 
 
 import MapView from '../screens/MapView'
@@ -13,9 +13,8 @@ import QuerySettings from '../screens/QuerySettings'
 import Summary from './Summary'
 
 
-const minDate = '2015-07-02'
+const minDate = '2018-07-15'
 const maxDate = moment().subtract(2, 'days').format('YYYY-MM-DD')
-
 
 
 const Main = props => {
@@ -24,9 +23,9 @@ const Main = props => {
   const [ supplySeries, setSupplySeries ] = useState({})
 
   const [ formValues , setFormValues ] = useState({
-    regionSelect: 'California', // Change After Development
+    regionSelect: 'All Regions', // Change After Development
     io: 'Demand',
-    startDate: maxDate,
+    startDate: minDate,
     endDate: maxDate,
   })
 
@@ -56,6 +55,7 @@ const Main = props => {
     )
   } else {
 
+    console.log(demandSeries)
 
     return (
       <main>
@@ -72,9 +72,9 @@ const Main = props => {
 
         <Summary
           settings={formValues}
-          Demand={fullyParseSeries(demandSeries, formValues)}
+          Demand={timeParseData(demandSeries[formValues.regionSelect], formValues.startDate, formValues.endDate)}
           Supply={
-            supplySeries.Texas ? fullyParseSeries(supplySeries, formValues) : {}
+            supplySeries.Texas ? timeParseData(supplySeries[formValues.regionSelect], formValues.startDate, formValues.endDate) : {}
           }
         />
       </main>

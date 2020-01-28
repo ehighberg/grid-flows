@@ -8,6 +8,7 @@ const api_key = process.env.REACT_APP_EIA_API_KEY
 const base = `https://api.eia.gov/series/?api_key=${api_key}&series_id=`
 
 export const regionCodes = {
+  'All Regions': 'US48',
   California: 'CAL',
   Carolinas: 'CAR',
   Central: 'CENT',
@@ -59,7 +60,7 @@ export const makeSeriesDict = async (io) => {
   const assignRegions = (data) => {
     data.forEach(series => {
       Object.keys(seriesDict).forEach(region => {
-          if (series.name.includes(region)) {
+          if (series.series_id.includes(regionCodes[region])) {
             seriesDict[region] = series
           }
       })

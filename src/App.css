@@ -25,6 +25,7 @@ footer {
   display: flex;
   justify-content: space-around;
   width: 100%;
+  height: 1.7em;
 }
 
 footer a {
@@ -54,6 +55,12 @@ header {
 
 nav {
   margin: auto 2vw auto auto;
+}
+
+summary {
+  position: fixed;
+  bottom: 2.2em;
+  left: 1em;
 }
 
 .header-title {

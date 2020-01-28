@@ -66,6 +66,8 @@
 - Gray out Supply button until Supply data loaded
 - Smarter date parsing: only parse in an approximate range of the io array
 - Summary table links to explanations of those statistics
+- Move calculations to web workers for greater responsiveness
+- Allow typed in dates
 
 - Animation showing demand changing over time / geographic areas
 
@@ -104,7 +106,7 @@
 | --- | :---: |  :---: | :---: | :---: |
 | Working API Calls | H | 2 | 6 | |
 | Component Hierarchy / Routing | H | 4 | 4 | |
-| Region / Data Type / Date Selection | H | 2 | 3 | |
+| Region / Data Type / Date Selection | H | 2 | 5 | |
 | Tabular Data Summary | H | 3 | 9 | |
 | Chart Display | H | 2 | | |
 | Map Display | H | 6 | 6 | |
@@ -131,11 +133,12 @@
 - React Router - URL-based conditional rendering
 - d3.js - Pretty map views
 - chroma - Color palettes
-- dotenv - Hide keys
+- dotenv - Hide API keys
 - Moment - Easier date handling
-- Stdlib-js, Math.js - Better chart plotting, data manipulation
 
 (PMVP)
+- Stdlib-js - Data manipulation
+- Math.js - data manipulation
 - Zebras - Tabular data manipulation
 - machinelearn.js - C++ based algorithms
 

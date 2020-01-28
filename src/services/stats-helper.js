@@ -10,7 +10,7 @@ const sortHelper = values => {
 
 export const mean = values => {
   // https://wikimedia.org/api/rest_v1/media/math/render/svg/4e3313161244f8ab61d897fb6e5fbf6647e1d5f5
-  return round(values.reduce((a, b) => a + b) / values.length, 2)
+  return round(values.reduce((a, b) => a + b) / values.length, 0)
 }
 
 export const stdDev = values => {
@@ -23,7 +23,7 @@ export const stdDev = values => {
     a + (b - sampleMean) ** 2) / (values.length - 1)
     )
     ** 0.5
-    , 2)
+    , 0)
 }
 
 export const iqr = values => {
@@ -35,8 +35,8 @@ export const iqr = values => {
 
   const median = (numVals % 2 !== 0) ?
     sortedValues[Math.floor(numVals / 2)] :
-    (sortedValues[Math.floor(numVals / 2)] +
-      sortedValues[Math.floor(numVals / 2) + 1]) / 2
+    round(((sortedValues[Math.floor(numVals / 2)] +
+      sortedValues[Math.floor(numVals / 2) + 1]) / 2), 0)
 
   const lowerIQR = sortedValues[Math.floor(numVals / 4)]
   const upperIQR = sortedValues[Math.floor(3 * numVals / 4)]
