@@ -13,7 +13,7 @@ import QuerySettings from '../screens/QuerySettings'
 import Summary from './Summary'
 
 
-const minDate = '2018-07-15'
+const minDate = '2015-07-02'
 const maxDate = moment().subtract(2, 'days').format('YYYY-MM-DD')
 
 
@@ -23,9 +23,9 @@ const Main = props => {
   const [ supplySeries, setSupplySeries ] = useState({})
 
   const [ formValues , setFormValues ] = useState({
-    regionSelect: 'All Regions', // Change After Development
+    regionSelect: 'All Regions',
     io: 'Demand',
-    startDate: minDate,
+    startDate: maxDate,
     endDate: maxDate,
   })
 
@@ -55,11 +55,22 @@ const Main = props => {
     )
   } else {
 
-    console.log(demandSeries)
+    const parsedDemand = timeParseData(demandSeries[formValues.regionSelect],  formValues.startDate, formValues.endDate)
+
+    const parsedSupply = supplySeries['All Regions'] ? timeParseData(supplySeries[formValues.regionSelect],  formValues.startDate, formValues.endDate) : {}
+
+    console.log(parsedDemand)
+    console.log(parsedSupply)
 
     return (
       <main>
-        <Route exact path='/' component={MapView} />
+        <Route exact path='/'>
+          <MapView 
+            settings={formValues}
+            Demand={parsedDemand}
+            Supply={ parsedSupply.series_id ? parsedSupply : {} }
+          />
+        </Route>
         {// <Route exact path='/chart' component={Chart} />
       }
 
@@ -72,10 +83,8 @@ const Main = props => {
 
         <Summary
           settings={formValues}
-          Demand={timeParseData(demandSeries[formValues.regionSelect], formValues.startDate, formValues.endDate)}
-          Supply={
-            supplySeries.Texas ? timeParseData(supplySeries[formValues.regionSelect], formValues.startDate, formValues.endDate) : {}
-          }
+          Demand={parsedDemand}
+          Supply={ parsedSupply.series_id ? parsedSupply : {} }
         />
       </main>
     )

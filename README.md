@@ -63,6 +63,7 @@
 
 ### Post-MVP
 
+- Move summaries to slugs
 - Gray out Supply button until Supply data loaded
 - Smarter date parsing: only parse in an approximate range of the io array
 - Summary table links to explanations of those statistics
@@ -132,6 +133,7 @@
 - Axios - API requests
 - React Router - URL-based conditional rendering
 - d3.js - Pretty map views
+- Rect d3 library - Use d3 in React
 - chroma - Color palettes
 - dotenv - Hide API keys
 - Moment - Easier date handling

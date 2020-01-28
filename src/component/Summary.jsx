@@ -6,7 +6,7 @@ import { extractValues } from '../services/seriesParsing'
 
 const Summary = props => {
 
-  const timeFormat = 'YYYY-MM-DD hh:00'
+  const timeFormat = 'YYYY/MM/DD HH:00'
   const startTimeString = moment(props.settings.startDate).format(timeFormat)
   const endTimeString = moment(props.settings.endDate).add(23, 'hours').format(timeFormat)
 
@@ -25,15 +25,15 @@ const Summary = props => {
   return (
     <summary>
       <h3 className='table-label'>
-        {startTimeString} to {endTimeString} UTC
+        {startTimeString} - {endTimeString} UTC
       </h3>
 
         <table className="greenTable">
           <thead>
             <tr>
             <th>{props.settings.regionSelect}</th>
-            <th>Demand</th>
-            <th>Supply</th>
+            <th>Demand (MWh)</th>
+            <th>Supply (MWh)</th>
             </tr>
           </thead>
 

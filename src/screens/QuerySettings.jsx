@@ -42,7 +42,7 @@ const QuerySettings = props => {
       Supply
       <br />
 
-      <label htmlFor='startDate'>Select Starting Date: </label>
+      <label htmlFor='startDate'>Start:</label>
       <input
         type='date'
         name='startDate'
@@ -50,9 +50,8 @@ const QuerySettings = props => {
         max={props.maxDate}
         value={startDate}
         onChange={props.onChange}/>
-      <br />
 
-      <label htmlFor='endDate'>Select Ending Date: </label>
+      <label htmlFor='endDate'>End:</label>
       <input
         type='date'
         name='endDate'
