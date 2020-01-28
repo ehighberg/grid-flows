@@ -4,7 +4,7 @@ import moment from 'moment'
 
 
 import { regionCodes, ioCodes, makeSeriesDict } from '../services/api-helper'
-import { extractValues, extractAllRegionValues, timeParseData } from '../services/seriesParsing'
+import { extractValues, timeParseAllRegionsData, timeParseData } from '../services/seriesParsing'
 
 
 import MapView from '../screens/MapView'
@@ -58,6 +58,7 @@ const Main = props => {
     console.log(demandSeries)
     console.log(formValues.startDate)
     console.log(timeParseData(demandSeries.California, formValues.startDate, formValues.endDate))
+    console.log(timeParseAllRegionsData(demandSeries, formValues.startDate, formValues.endDate))
 
     return (
       <main>

@@ -8,7 +8,7 @@ export const extractValues = series => {
   return series.flat().filter((value, index) => index % 2 !== 0)
 }
 
-export const extractAllRegionValues = ioSeries => {
+const extractAllRegionValues = ioSeries => {
   const seriesLength = ioSeries.California.data.length
 
   const accumulator = new Float32Array(seriesLength)
@@ -34,12 +34,31 @@ export const timeParseData = (series, startDate, endDate) => {
 
   parsedSeries.data = series.data.filter(timeValPair => {
     const parsedTime = moment.parseZone(timeValPair[0])
-    return (( parsedTime >= startTime) && (parsedTime <= endTime))
+    return ( (parsedTime >= startTime) && (parsedTime <= endTime) )
   })
 
   return parsedSeries
 }
 
 export const timeParseAllRegionsData = (serieses, startDate, endDate) => {
-  return ''
+  const allRegionsSeries = {
+    name: "Demand for All Regions, hourly - UTC time",
+    data: []
+  }
+
+  const timeParsedSerieses = Object.assign({}, serieses)
+  console.log(timeParsedSerieses)
+  Object.keys(serieses).forEach(seriesKey => {
+    timeParsedSerieses[seriesKey] = timeParseData(serieses[seriesKey], startDate, endDate)
+  })
+  console.log(timeParsedSerieses)
+
+  const allRegionsValues = extractAllRegionValues(timeParsedSerieses)
+  console.log(allRegionsValues)
+
+  timeParsedSerieses.Texas.data.forEach((timeValPair, i) => {
+    allRegionsSeries.data.push([timeValPair[0], allRegionsValues[i]])
+  })
+
+  return allRegionsSeries
 }
