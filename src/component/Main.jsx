@@ -14,7 +14,7 @@ import Summary from './Summary'
 
 
 const minDate = '2015-07-01'
-const maxDate = moment().subtract(1, 'days').format('YYYY-MM-DD')
+const maxDate = moment().subtract(2, 'days').format('YYYY-MM-DD')
 
 let counter = 0
 

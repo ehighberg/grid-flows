@@ -8,6 +8,15 @@ const Summary = props => {
   const io = props.settings.io
   console.log(io)
   console.log(props[io])
+
+  if (!props[io].data) {
+    return (
+      <summary>
+        <h2>Loading {io} data for {props.settings.regionSelect}</h2>
+      </summary>
+    )
+  }
+
   const data = extractValues(props[io].data)
 
   return (
