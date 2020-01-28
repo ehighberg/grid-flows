@@ -63,7 +63,11 @@
 
 ### Post-MVP
 
+- Gray out Supply button until Supply data loaded
+- Smarter date parsing: only parse in an approximate range of the io array
+
 - Animation showing demand changing over time / geographic areas
+
 - Demand forecasting model and predictions
 - Model explanation
 - Incorporate weather data into model
@@ -100,13 +104,13 @@
 | Working API Calls | H | 2 | 6 | |
 | Component Hierarchy / Routing | H | 4 | 4 | |
 | Region / Data Type / Date Selection | H | 2 | 2.5 | |
-| Tabular Data Summary | H | 3 | 4 | |
+| Tabular Data Summary | H | 3 | 7 | |
 | Chart Display | H | 2 | | |
 | Map Display | H | 6 | 6 | |
 | Frame-by-frame Power Visual | M | 4 | | |
 | Animated Power Flows | M | 4 | | |
 | Predictive Power Modeling | L | 8 | | |
-| Total | H | 35 | | |
+| Total | H | 35 | 25.5 | |
 
 
 ## Project Schedule
@@ -114,7 +118,7 @@
 |  Day | Deliverable | Status
 |---|---| ---|
 |Jan 24th| Project Pitch / Wireframes / Priority Matrix / Component Hierarchy | Complete
-|Jan 27th| API calls, Render basic info | Incomplete
+|Jan 27th| API calls, Render basic info | Complete
 |Jan 28th| Render Map, Charts (MVP) | Incomplete
 |Jan 29th| Animated Power Flows | Incomplete
 |Jan 30th| Supply / Demand prediction | Incomplete

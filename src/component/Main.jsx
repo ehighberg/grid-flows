@@ -16,6 +16,8 @@ import Summary from './Summary'
 const minDate = '2015-07-01'
 const maxDate = moment().subtract(1, 'days').format('YYYY-MM-DD')
 
+let counter = 0
+
 
 const Main = props => {
 
@@ -44,6 +46,22 @@ const Main = props => {
     setSupplySeries(supplyRes)
   }
 
+  const parseDemandSeries = () => {
+    if (formValues.regionSelect === 'All Regions') {
+      return timeParseAllRegionsData(demandSeries, formValues.startDate, formValues.endDate)
+    } else {
+      return timeParseData(demandSeries[formValues.regionSelect], formValues.startDate, formValues.endDate)
+    }
+  }
+
+  const parseSupplySeries = () => {
+    if (formValues.regionSelect === 'All Regions') {
+      return timeParseAllRegionsData(supplySeries, formValues.startDate, formValues.endDate)
+    } else {
+      return timeParseData(supplySeries[formValues.regionSelect], formValues.startDate, formValues.endDate)
+    }
+  }
+
   useEffect(() => { getAPIResponses() }
     , [])
 
@@ -54,11 +72,13 @@ const Main = props => {
     )
   } else {
 
+    counter++
+    console.log('counter: ', + counter)
 
-    console.log(demandSeries)
-    console.log(formValues.startDate)
-    console.log(timeParseData(demandSeries.California, formValues.startDate, formValues.endDate))
-    console.log(timeParseAllRegionsData(demandSeries, formValues.startDate, formValues.endDate))
+    // console.log(demandSeries)
+    // console.log(formValues.startDate)
+    // console.log(timeParseData(demandSeries.California, formValues.startDate, formValues.endDate))
+    // console.log(timeParseAllRegionsData(demandSeries, formValues.startDate, formValues.endDate))
 
     return (
       <main>
@@ -75,8 +95,8 @@ const Main = props => {
 
         <Summary
           settings={formValues}
-          demand={demandSeries}
-          supply={supplySeries}
+          Demand={parseDemandSeries()}
+          Supply={() => {return supplySeries.Texas ? parseSupplySeries() : {}}}
         />
       </main>
     )

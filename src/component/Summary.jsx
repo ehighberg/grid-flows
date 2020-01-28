@@ -5,14 +5,15 @@ import { extractValues } from '../services/seriesParsing'
 
 const Summary = props => {
 
-  const testData = extractValues(props.demand.California.data)
+  const io = props.settings.supplyOrDemand
+  const data = extractValues(props[io].data)
 
   return (
     <summary>
-      <h2>Summary data for {props.settings.regionSelect}</h2>
-      <p>{mean(testData)}</p>
-      <p>{stdDev(testData)}</p>
-      <p>{iqr(testData).join(', ')}</p>
+      <h2>{props[io].name}</h2>
+      <p>{mean(data)}</p>
+      <p>{stdDev(data)}</p>
+      <p>{iqr(data).join(', ')}</p>
     </summary>
   )
 }

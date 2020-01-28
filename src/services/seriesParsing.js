@@ -47,14 +47,11 @@ export const timeParseAllRegionsData = (serieses, startDate, endDate) => {
   }
 
   const timeParsedSerieses = Object.assign({}, serieses)
-  console.log(timeParsedSerieses)
   Object.keys(serieses).forEach(seriesKey => {
     timeParsedSerieses[seriesKey] = timeParseData(serieses[seriesKey], startDate, endDate)
   })
-  console.log(timeParsedSerieses)
 
   const allRegionsValues = extractAllRegionValues(timeParsedSerieses)
-  console.log(allRegionsValues)
 
   timeParsedSerieses.Texas.data.forEach((timeValPair, i) => {
     allRegionsSeries.data.push([timeValPair[0], allRegionsValues[i]])
