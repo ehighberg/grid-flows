@@ -1,13 +1,17 @@
 :root {
-  --bg-one: #0e79b2;
-  --text-one: #ffbf00;
+  /* based on 538 color palette https://www.color-hex.com/color-palette/13650 */
+  --bg-one: #30a2ff;
+  --text-one: #ffdf00;
+  --border-one: #69d04f;
+  --text-two: #fc4f30;
+  --half-gray: #8b8b8b;
 }
 
 a {
   color: var(--text-one);
   text-decoration: none;
   padding: 0.3vh 1vw;
-  border: 2px solid #8bc34a;
+  border: 2px solid var(--border-one);
   border-radius: 0.3em;
   margin: 0 1vw;
 }
@@ -40,10 +44,6 @@ form * {
   margin: 1vh 1vw;
 }
 
-h3 {
-  margin: 1vh auto 1vh 2vw;
-}
-
 header {
   font-size: 1em;
   background-color: var(--bg-one);
@@ -54,4 +54,47 @@ header {
 
 nav {
   margin: auto 2vw auto auto;
+}
+
+.header-title {
+  margin: 1vh auto 1vh 2vw;
+}
+
+.table-label {
+  text-align: center;
+  margin: 0 0 1vh 0;
+}
+
+/* From  https://divtable.com/table-styler/ */
+table.greenTable {
+  font-family: serif;
+  border: 6px solid #24943A;
+  background-color: #D4EED1;
+  width: 95%;
+  text-align: center;
+  margin: 0 auto;
+}
+table.greenTable td, table.greenTable th {
+  border: 1px solid #24943A;
+  padding: 3px 2px;
+}
+table.greenTable tbody td {
+  font-size: 0.85em;
+}
+table.greenTable thead {
+  background: #56AA40;
+  background: -moz-linear-gradient(top, #80bf70 0%, #67b253 66%, #56AA40 100%);
+  background: -webkit-linear-gradient(top, #80bf70 0%, #67b253 66%, #56AA40 100%);
+  background: linear-gradient(to bottom, #80bf70 0%, #67b253 66%, #56AA40 100%);
+  border-bottom: 0px solid #444444;
+}
+table.greenTable thead th {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #F8F8F8;
+  text-align: center;
+  border-left: 2px solid #69D04F;
+}
+table.greenTable thead th:first-child {
+  border-left: none;
 }

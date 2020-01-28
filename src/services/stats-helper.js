@@ -4,7 +4,7 @@ const round = (numToRound, numPlaces) => {
 }
 
 const sortHelper = values => {
-  return values.sort((a, b) => a > b)
+  return values.sort((a, b) => a - b)
 }
 
 

@@ -1,30 +1,70 @@
 import React from 'react'
+import moment from 'moment'
 
 import { mean, stdDev, iqr } from '../services/stats-helper'
 import { extractValues } from '../services/seriesParsing'
 
 const Summary = props => {
 
-  const io = props.settings.io
-  console.log(io)
-  console.log(props[io])
+  const timeFormat = 'YYYY-MM-DD hh:00'
+  const startTimeString = moment(props.settings.startDate).format(timeFormat)
+  const endTimeString = moment(props.settings.endDate).add(23, 'hours').format(timeFormat)
 
-  if (!props[io].data) {
-    return (
-      <summary>
-        <h2>Loading {io} data for {props.settings.regionSelect}</h2>
-      </summary>
-    )
+  const renderSupplyValue = valueFn => {
+    if (!props.Supply.series_id) {
+      return 'Loading...'
+    } else {
+      return valueFn(extractValues(props.Supply.data))
+    }
   }
 
-  const data = extractValues(props[io].data)
+  const demandData = extractValues(props.Demand.data)
+  const [ demLower, demMed, demHigh ] = iqr(demandData)
+  const [ supLower, supMed, supHigh ] = props.Supply.series_id ? iqr(extractValues(props.Supply.data)) : ['Loading...', 'Loading...', 'Loading...']
 
   return (
     <summary>
-      <h2>{props[io].name}</h2>
-      <p>{mean(data)}</p>
-      <p>{stdDev(data)}</p>
-      <p>{iqr(data).join(', ')}</p>
+      <h3 className='table-label'>
+        {startTimeString} to {endTimeString} UTC
+      </h3>
+
+        <table className="greenTable">
+          <thead>
+            <tr>
+            <th>{props.settings.regionSelect}</th>
+            <th>Demand</th>
+            <th>Supply</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Average</td>
+              <td>{mean(demandData)}</td>
+              <td>{renderSupplyValue(mean)}</td>
+            </tr>
+            <tr>
+              <td>Standard Deviation</td>
+              <td>{stdDev(demandData)}</td>
+              <td>{renderSupplyValue(stdDev)}</td>
+            </tr>
+            <tr>
+              <td>Lower Quartile</td>
+              <td>{demLower}</td>
+              <td>{supLower}</td>
+            </tr>
+            <tr>
+              <td>Median</td>
+              <td>{demMed}</td>
+              <td>{supMed}</td>
+            </tr>
+            <tr>
+              <td>Upper Quartile</td>
+              <td>{demHigh}</td>
+              <td>{supHigh}</td>
+            </tr>
+          </tbody>
+        </table>
     </summary>
   )
 }

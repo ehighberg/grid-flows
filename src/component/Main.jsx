@@ -13,10 +13,9 @@ import QuerySettings from '../screens/QuerySettings'
 import Summary from './Summary'
 
 
-const minDate = '2015-07-01'
+const minDate = '2015-07-02'
 const maxDate = moment().subtract(2, 'days').format('YYYY-MM-DD')
 
-let counter = 0
 
 
 const Main = props => {
@@ -32,7 +31,7 @@ const Main = props => {
   })
 
   const onFormChange = (e) => {
-    console.log(e.target.name, e.target.value)
+    console.log('Set', e.target.name, 'to', e.target.value)
     setFormValues({
       ...formValues,
       [e.target.name]: e.target.value
@@ -57,8 +56,6 @@ const Main = props => {
     )
   } else {
 
-    counter++
-    console.log('counter: ', + counter)
 
     return (
       <main>
