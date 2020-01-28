@@ -5,7 +5,9 @@ import { extractValues } from '../services/seriesParsing'
 
 const Summary = props => {
 
-  const io = props.settings.supplyOrDemand
+  const io = props.settings.io
+  console.log(io)
+  console.log(props[io])
   const data = extractValues(props[io].data)
 
   return (

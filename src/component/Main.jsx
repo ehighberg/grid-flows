@@ -3,8 +3,8 @@ import { Route } from 'react-router-dom'
 import moment from 'moment'
 
 
-import { regionCodes, ioCodes, makeSeriesDict } from '../services/api-helper'
-import { extractValues, timeParseAllRegionsData, timeParseData } from '../services/seriesParsing'
+import { makeSeriesDict } from '../services/api-helper'
+import { fullyParseSeries } from '../services/seriesParsing'
 
 
 import MapView from '../screens/MapView'
@@ -25,8 +25,8 @@ const Main = props => {
   const [ supplySeries, setSupplySeries ] = useState({})
 
   const [ formValues , setFormValues ] = useState({
-    regionSelect: 'All Regions',
-    supplyOrDemand: 'Demand',
+    regionSelect: 'California', // Change After Development
+    io: 'Demand',
     startDate: maxDate,
     endDate: maxDate,
   })
@@ -46,21 +46,6 @@ const Main = props => {
     setSupplySeries(supplyRes)
   }
 
-  const parseDemandSeries = () => {
-    if (formValues.regionSelect === 'All Regions') {
-      return timeParseAllRegionsData(demandSeries, formValues.startDate, formValues.endDate)
-    } else {
-      return timeParseData(demandSeries[formValues.regionSelect], formValues.startDate, formValues.endDate)
-    }
-  }
-
-  const parseSupplySeries = () => {
-    if (formValues.regionSelect === 'All Regions') {
-      return timeParseAllRegionsData(supplySeries, formValues.startDate, formValues.endDate)
-    } else {
-      return timeParseData(supplySeries[formValues.regionSelect], formValues.startDate, formValues.endDate)
-    }
-  }
 
   useEffect(() => { getAPIResponses() }
     , [])
@@ -74,11 +59,6 @@ const Main = props => {
 
     counter++
     console.log('counter: ', + counter)
-
-    // console.log(demandSeries)
-    // console.log(formValues.startDate)
-    // console.log(timeParseData(demandSeries.California, formValues.startDate, formValues.endDate))
-    // console.log(timeParseAllRegionsData(demandSeries, formValues.startDate, formValues.endDate))
 
     return (
       <main>
@@ -95,8 +75,10 @@ const Main = props => {
 
         <Summary
           settings={formValues}
-          Demand={parseDemandSeries()}
-          Supply={() => {return supplySeries.Texas ? parseSupplySeries() : {}}}
+          Demand={fullyParseSeries(demandSeries, formValues)}
+          Supply={
+            supplySeries.Texas ? fullyParseSeries(supplySeries, formValues) : {}
+          }
         />
       </main>
     )

@@ -25,7 +25,7 @@ const extractAllRegionValues = ioSeries => {
   return accumulator
 }
 
-export const timeParseData = (series, startDate, endDate) => {
+const timeParseData = (series, startDate, endDate) => {
 
   const startTime = moment(startDate)
   const endTime = moment(endDate).add(23, 'hours')
@@ -40,7 +40,7 @@ export const timeParseData = (series, startDate, endDate) => {
   return parsedSeries
 }
 
-export const timeParseAllRegionsData = (serieses, startDate, endDate) => {
+const timeParseAllRegionsData = (serieses, startDate, endDate) => {
   const allRegionsSeries = {
     name: "Demand for All Regions, hourly - UTC time",
     data: []
@@ -58,4 +58,13 @@ export const timeParseAllRegionsData = (serieses, startDate, endDate) => {
   })
 
   return allRegionsSeries
+}
+
+
+export const fullyParseSeries = (series, settings) => {
+  if (settings.regionSelect === 'All Regions') {
+    return timeParseAllRegionsData(series, settings.startDate, settings.endDate)
+  } else {
+    return timeParseData(series[settings.regionSelect], settings.startDate, settings.endDate)
+  }
 }

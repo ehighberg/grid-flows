@@ -5,7 +5,7 @@ import { regionCodes } from '../services/api-helper'
 
 const QuerySettings = props => {
 
-  const { regionSelect, supplyOrDemand, startDate, endDate } = props.formValues
+  const { regionSelect, io, startDate, endDate } = props.formValues
 
   return (
     <form>
@@ -29,16 +29,16 @@ const QuerySettings = props => {
 
       <input
         type='radio'
-        name='supplyOrDemand'
+        name='io'
         value='Demand'
-        checked={supplyOrDemand === 'Demand'} onChange={props.onChange} />
+        checked={io === 'Demand'} onChange={props.onChange} />
       Demand
 
       <input
         type='radio'
-        name='supplyOrDemand'
+        name='io'
         value='Supply'
-        checked={supplyOrDemand === 'Supply'} onChange={props.onChange} />
+        checked={io === 'Supply'} onChange={props.onChange} />
       Supply
       <br />
 
