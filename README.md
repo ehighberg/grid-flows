@@ -111,7 +111,7 @@
 | Component Hierarchy / Routing | H | 4 | 4 | |
 | Region / Data Type / Date Selection | H | 2 | 5 | |
 | Tabular Data Summary | H | 3 | 9 | |
-| Map Display | H | 6 | 9 | |
+| Map Display | H | 6 | 11 | |
 | Frame-by-frame Power Visual | M | 4 | | |
 | Animated Power Flows | M | 4 | | |
 | Predictive Power Modeling | L | 8 | | |

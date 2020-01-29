@@ -66,12 +66,17 @@ summary {
   margin: 1vh auto 1vh 2vw;
 }
 
+.d3-component {
+  display: block;
+  margin: 0 auto;
+}
+
 .table-label {
   text-align: center;
   margin: 0 0 1vh 0;
 }
 
-/* From  https://divtable.com/table-styler/ */
+/* Made wit https://divtable.com/table-styler/ */
 table.greenTable {
   font-family: serif;
   border: 6px solid #24943A;
