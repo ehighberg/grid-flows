@@ -69,12 +69,14 @@
 - Summary table links to explanations of those statistics
 - Move calculations to web workers for greater responsiveness
 - Allow typed in dates
+- Convert stats functions to d3
 
 - Animation showing demand changing over time / geographic areas
 
 - Demand forecasting model and predictions
 - Model explanation
 - Incorporate weather data into model
+- Charts
 
 
 ## React Component Hierarchy
@@ -109,8 +111,7 @@
 | Component Hierarchy / Routing | H | 4 | 4 | |
 | Region / Data Type / Date Selection | H | 2 | 5 | |
 | Tabular Data Summary | H | 3 | 9 | |
-| Chart Display | H | 2 | | |
-| Map Display | H | 6 | 6 | |
+| Map Display | H | 6 | 9 | |
 | Frame-by-frame Power Visual | M | 4 | | |
 | Animated Power Flows | M | 4 | | |
 | Predictive Power Modeling | L | 8 | | |
@@ -122,8 +123,8 @@
 |  Day | Deliverable | Status
 |---|---| ---|
 |Jan 24th| Project Pitch / Wireframes / Priority Matrix / Component Hierarchy | Complete
-|Jan 27th| API calls, Render basic info | Complete
-|Jan 28th| Render Map, Charts (MVP) | Incomplete
+|Jan 27th| API calls, Render data summary | Complete
+|Jan 28th| Render Map (MVP) | Incomplete
 |Jan 29th| Animated Power Flows | Incomplete
 |Jan 30th| Supply / Demand prediction | Incomplete
 |Jan 31st| Present | Incomplete
@@ -133,7 +134,6 @@
 - Axios - API requests
 - React Router - URL-based conditional rendering
 - d3.js - Pretty map views
-- Rect d3 library - Use d3 in React
 - chroma - Color palettes
 - dotenv - Hide API keys
 - Moment - Easier date handling
@@ -149,7 +149,9 @@
 
 I decided to load all the API data on initial page load into a single nested object. It turned out that navigating nested objects is complicated and messy, and took about 2 hours to get right.
 
-Ended up using Stdlib for some math operations that would have been cumbersome to implement by hand (and much slower).
+Initially I was combining all of the regional API data into national data, but not all of the series had data covering the entire time period. Fixed by calling for national data directly from the API.
+
+Getting d3 to work for the first time, while in React, was very challenging.
 
 
 ## Code Snippet
@@ -166,3 +168,4 @@ function reverse(string) {
 - [2020-01-24]: Dataset selection moved to own page.
 - [2020-01-25]: Loading all API results on initial page landing.
 - [2020-01-26]: Using Stdlib-js, Math.js for data wrangling.
+- [2020-01-29]: Removed stdlib, Math. Moved charts to PMVP.
