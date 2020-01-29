@@ -70,6 +70,7 @@
 - Move calculations to web workers for greater responsiveness
 - Allow typed in dates
 - Convert stats functions to d3
+- Mobile version of mouseover / mouseout
 
 - Animation showing demand changing over time / geographic areas
 
@@ -140,7 +141,7 @@
 
 (PMVP)
 - Stdlib-js - Data manipulation
-- Math.js - data manipulation
+- Math.js - Data manipulation
 - Zebras - Tabular data manipulation
 - machinelearn.js - C++ based algorithms
 

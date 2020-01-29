@@ -7,18 +7,20 @@ const MapView = props => {
 
   const d3Container = useRef(null)
 
-  const data = {}
+  const data = {
+    Demand: props.Demand,
+    Supply: props.Supply
+  }
 
   const mapWidth = '95vw'
   const mapHeight = '60vw'
 
 
   useEffect(() => {
-    // setMapSVG(projectMap())
     if (data && d3Container.current) {
-      projectMap(data, d3Container)
+      projectMap(data, d3Container, props.settings)
     }
-  }, [data])
+  }, [data, props.settings])
 
 
   return (

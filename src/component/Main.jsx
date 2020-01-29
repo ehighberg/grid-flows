@@ -45,8 +45,9 @@ const Main = props => {
   }
 
 
-  useEffect(() => { getAPIResponses() }
-    , [])
+  useEffect(() => {
+    getAPIResponses()
+   }, [])
 
 
   if (!demandSeries.California) {
@@ -64,15 +65,14 @@ const Main = props => {
 
     return (
       <main>
+
         <Route exact path='/'>
-          <MapView 
+          <MapView
             settings={formValues}
             Demand={parsedDemand}
             Supply={ parsedSupply.series_id ? parsedSupply : {} }
           />
         </Route>
-        {// <Route exact path='/chart' component={Chart} />
-      }
 
         <Route exact path='/browse' >
           <QuerySettings
@@ -80,6 +80,7 @@ const Main = props => {
             minDate={minDate} maxDate={maxDate} formValues={formValues}
           />
         </Route>
+
 
         <Summary
           settings={formValues}
