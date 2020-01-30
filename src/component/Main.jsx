@@ -24,12 +24,11 @@ const Main = props => {
 
   const [ formValues , setFormValues ] = useState({
     regionSelect: 'All Regions',
-    startDate: '2020-01-03',
+    startDate: maxDate,
     endDate: maxDate,
   })
 
   const onFormChange = (e) => {
-    console.log('Set', e.target.name, 'to', e.target.value)
     setFormValues({
       ...formValues,
       [e.target.name]: e.target.value
@@ -55,14 +54,10 @@ const Main = props => {
     )
   } else {
 
-    console.log('rendering main')
-
     const allParsedDemand = timeParseSerieses(demandSeries, formValues.startDate, formValues.endDate)
 
     const allParsedSupply = supplySeries['All Regions'] ? timeParseSerieses(supplySeries,  formValues.startDate, formValues.endDate) : {}
 
-    console.log(allParsedDemand)
-    console.log(allParsedSupply)
 
     return (
       <main>

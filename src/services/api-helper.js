@@ -46,7 +46,6 @@ const fetchSetOfRegionalData = async (io) => {
       .join(';')
     }`
 
-  console.log(query)
   const response = await axios.get(query)
   return response.data.series
 }

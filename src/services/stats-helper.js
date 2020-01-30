@@ -1,4 +1,4 @@
-const round = (numToRound, numPlaces) => {
+export const round = (numToRound, numPlaces) => {
   const powerOf10 = 10 ** numPlaces
   return Math.floor(numToRound * powerOf10) / powerOf10
 }

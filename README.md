@@ -76,6 +76,7 @@
 - Scale coloration based on power / population, or to net generation / supply or demand (extra settings)
 - Infer missing timestamps
 - Desktop contact icons under name
+- Better looking tooltips
 
 
 - Demand forecasting model and predictions
@@ -112,13 +113,12 @@
 
 | Component | Priority | Estimated Time (hrs) | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Working API Calls | H | 2 | 6 | |
-| Component Hierarchy / Routing | H | 4 | 4 | |
-| Region / Data Type / Date Selection | H | 2 | 5 | |
-| Tabular Data Summary | H | 3 | 9 | |
-| Map Display | H | 6 | 20 | |
-| Frame-by-frame Power Visual | M | 4 | | |
-| Total | H | 35 | 25.5 | |
+| Working API Calls | H | 2 | 6 | 6 |
+| Component Hierarchy / Routing | H | 4 | 4 | 4 |
+| Region / Data Type / Date Selection | H | 2 | 5 | 5 |
+| Tabular Data Summary | H | 3 | 9 | 9 |
+| Map Display | H | 6 | 24 | 24 |
+| Total | H | 35 | 48 | 48 |
 
 
 ## Project Schedule
@@ -160,14 +160,32 @@ Object.assign only gave shallow copies, turns out you can work around this by pa
 
 Not all series have all timestamps available, will need to infer values.
 
+Absolute positioning of text tooltips did not seem to actually move them, but transform: translate(); did.
+
+D3 map styling is static right now, resolution TBD.
+
 
 ## Code Snippet
 
-Use this section to include a brief code snippet you are proud of, along with a brief description of why.
+I made a plural for 'series', found out how to deep copy objects, and used Moment to get times only in a limited timeframe.
 
 ```
-function reverse(string) {
-	// here is the code to reverse a string of text
+export const timeParseSerieses = (serieses, startDate, endDate) => {
+  const startTime = moment.parseZone(startDate)
+  const endTime = moment.parseZone(endDate).add(23, 'hours')
+
+  const parsedSerieses = JSON.parse(JSON.stringify(serieses))
+
+  Object.keys(parsedSerieses).forEach(key => {
+    parsedSerieses[key].data = parsedSerieses[key].data.filter(
+      timeValPair => {
+        const parsedTime = moment.parseZone(timeValPair[0])
+        return ( (parsedTime >= startTime) && (parsedTime <= endTime) )
+      }
+    )
+  })
+
+  return parsedSerieses
 }
 ```
 
@@ -176,4 +194,4 @@ function reverse(string) {
 - [2020-01-25]: Loading all API results on initial page landing.
 - [2020-01-26]: Using Stdlib-js, Math.js for data wrangling.
 - [2020-01-29]: Removed stdlib, Math. Moved charts to PMVP.
-- [2020-01-30]: Removed flowing power from timeline
+- [2020-01-30]: Removed flowing power from timeline, animations

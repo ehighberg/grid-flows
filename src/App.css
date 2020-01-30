@@ -7,10 +7,15 @@
   --half-gray: #8b8b8b;
 }
 
+.App {
+  font-family: 'Cousine', sans-serif;
+}
+
 a {
   color: var(--text-one);
   text-decoration: none;
   padding: 0.3vh 1vw;
+  padding-top: 0.4vh;
   border: 2px solid var(--border-one);
   border-radius: 0.3em;
   margin: 0 1vw;
@@ -61,11 +66,7 @@ summary {
   bottom: 2.2em;
 }
 
-g text {
-  font-size: 0.8em;
-  position: absolute;
-  bottom: 50%;
-}
+
 
 svg {
   max-width: 1350px;
@@ -81,14 +82,27 @@ svg {
   margin: 0 auto;
 }
 
+.legend-container text {
+  font-size: 0.8em;
+  position: absolute;
+  bottom: 50%;
+}
+
+.legend-title {
+  font-size: 0.8em;
+  position: absolute;
+  bottom: 50%;
+  letter-spacing: -0.01em;
+}
+
 .table-label {
   text-align: center;
   margin: 0 0 1vh 0;
+  font-size: 1.05em;
 }
 
 /* Made with https://divtable.com/table-styler/ */
 table.greenTable {
-  font-family: serif;
   border: 6px solid #24943A;
   background-color: #D4EED1;
   width: 95%;
@@ -173,10 +187,5 @@ table.greenTable thead th:first-child {
 
   .fa {
     font-size: 1.8em;
-  }
-
-  /* TESTING BREAKPOINT TO GET RID OF SCREEN FLICKER */
-  footer, header {
-    background-color: var(--half-gray)
   }
 }
