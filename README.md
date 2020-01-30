@@ -63,17 +63,19 @@
 
 ### Post-MVP
 
+- Legend
+- Animation showing demand changing over time / geographic areas
+- Tooltips
 - Move summaries to slugs
-- Gray out Supply button until Supply data loaded
-- Smarter date parsing: only parse in an approximate range of the io array
 - Summary table links to explanations of those statistics
+- Smarter date parsing: only parse in an approximate range of the io array
 - Move calculations to web workers for greater responsiveness
 - Allow typed in dates
 - Convert stats functions to d3
 - Mobile version of mouseover / mouseout
-- Scale coloration based on power / population, or to net generation / supply or demand (extra setting)
+- Scale coloration based on power / population, or to net generation / supply or demand (extra settings)
+- Infer missing timestamps
 
-- Animation showing demand changing over time / geographic areas
 
 - Demand forecasting model and predictions
 - Model explanation
@@ -137,6 +139,7 @@
 - d3.js - Pretty map views
 - dotenv - Hide API keys
 - Moment - Easier date handling
+- Radium - CSS breakpoints in JS
 
 (PMVP)
 - Stdlib-js - Data manipulation
@@ -152,6 +155,10 @@ I decided to load all the API data on initial page load into a single nested obj
 Initially I was combining all of the regional API data into national data, but not all of the series had data covering the entire time period. Fixed by calling for national data directly from the API.
 
 Getting d3 to work for the first time, while in React, was very challenging.
+
+Object.assign only gave shallow copies, turns out you can work around this by parsing the object to JSON, then parsing it back.
+
+Not all series have all timestamps available, will need to infer values.
 
 
 ## Code Snippet

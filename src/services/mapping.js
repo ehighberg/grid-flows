@@ -77,9 +77,7 @@ export const projectMap = (ioData, d3Container, settings) => {
 
     const colorScale = d3.scaleSequential()
       .domain([-0.3, 0.3])
-      .interpolator(d3.interpolateInferno)
-
-    console.log(colorScale)
+      .interpolator(d3.interpolateViridis)
 
     svg.selectAll('path')
       .attr('fill', (d) => {

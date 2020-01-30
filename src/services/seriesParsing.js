@@ -9,7 +9,7 @@ export const timeParseSerieses = (serieses, startDate, endDate) => {
   const startTime = moment.parseZone(startDate)
   const endTime = moment.parseZone(endDate).add(23, 'hours')
 
-  const parsedSerieses = Object.assign({}, serieses)
+  const parsedSerieses = JSON.parse(JSON.stringify(serieses))
 
   Object.keys(parsedSerieses).forEach(key => {
     parsedSerieses[key].data = parsedSerieses[key].data.filter(

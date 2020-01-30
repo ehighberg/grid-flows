@@ -24,8 +24,7 @@ const Main = props => {
 
   const [ formValues , setFormValues ] = useState({
     regionSelect: 'All Regions',
-    io: 'Demand',
-    startDate: maxDate,
+    startDate: '2020-01-03',
     endDate: maxDate,
   })
 
@@ -70,7 +69,7 @@ const Main = props => {
           <MapView
             settings={formValues}
             Demand={allParsedDemand}
-            Supply={ allParsedSupply['All Regions'] ? allParsedSupply : {} }
+            Supply={allParsedSupply['All Regions'] ? allParsedSupply : {} }
           />
         </Route>
 
