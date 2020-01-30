@@ -10,28 +10,53 @@ const assignRegions = (states) => {
   })
 }
 
-const onMouseover = function(statePath, svg) {
+const calcExcess = (supply, demand) => {
+  return (supply - demand) / demand
+}
+
+const onMouseover = function(statePath, svg, tooltip) {
+  // Tooltip largely from https://bl.ocks.org/d3noob/a22c42db65eb00d4e369
+
   // console.log(svg)
   console.log(statePath)
   // console.log(statePath.getAttribute('region'))
+  const supply = statePath.getAttribute('Supply')
+  const demand = statePath.getAttribute('Demand')
+  const excess = calcExcess(supply, demand)
 
   svg.selectAll('path').filter((item) =>
     (item.region === statePath.getAttribute('region'))
     )
     .style('stroke-width', '3')
+
+  tooltip.transition()
+    .duration(150)
+    .style('opacity', 0.9)
+    .text(excess)
+    .style('left', (d3.event.pageX) + 'px')
+    .style('top', (d3.event.pageY - 28) + 'px')
+
+  console.log(tooltip._groups[0])
 }
 
-const onMouseout = function(statePath, svg) {
+const onMouseout = function(statePath, svg, tooltip) {
   svg.selectAll('path').filter((item) =>
     (item.region === statePath.getAttribute('region'))
     )
     .style('stroke-width', '1')
+
+  svg.select('tooltip').transition()
+    .duration(400)
+    .style('opacity', 0)
 }
 
-const addEvents = (svg) => {
+const addEvents = (svg, tooltip) => {
+
+  console.log(svg._groups[0][0].children)
+
   svg.selectAll('path')
-    .on('mouseover', function () {onMouseover(this, svg)})
-    .on('mouseout', function () {onMouseout(this, svg)})
+    .on('mouseover', function () {onMouseover(this, svg, tooltip)})
+    .on('mouseout', function () {onMouseout(this, svg, tooltip)})
 }
 
 export const projectMap = (ioData, d3Container, settings) => {
@@ -71,7 +96,14 @@ export const projectMap = (ioData, d3Container, settings) => {
     .style("stroke", "#fff")
     .style("stroke-width", "1")
 
-  addEvents(svg)
+  const tooltip = svg.append('text')
+    .attr('className', 'tooltip')
+    .style('opacity', 0)
+
+
+  console.log(svg._groups[0][0])
+
+  addEvents(svg, tooltip)
 
   if (ioData.Supply['All Regions']) {
     svg.selectAll('path')
@@ -83,34 +115,29 @@ export const projectMap = (ioData, d3Container, settings) => {
 
     svg.selectAll('path')
       .attr('fill', (d) => {
-        // console.log(d)
-        // console.log(ioData.Demand[d.region].data[0][1])
-        // console.log(colorScale(ioData.Demand[d.region].data[0][1]))
         const values = {
           Supply: ioData.Supply[d.region].data[0][1],
           Demand: ioData.Demand[d.region].data[0][1]
         }
 
-        values.Net = values.Supply - values.Demand
-        console.log(values.Net / values.Demand)
-        return colorScale(values.Net / values.Demand)
+        return colorScale(calcExcess(values.Supply, values.Demand))
       })
 
-      const legend = d3Legend.legendColor()
-        .scale(colorScale)
-        .cells(7)
-        .orient('horizontal')
-        .shapePadding(0)
-        .labels(['-30', '', '', '0', '', '', '30'])
+    const legend = d3Legend.legendColor()
+      .scale(colorScale)
+      .cells(7)
+      .orient('horizontal')
+      .shapePadding(0)
+      .labels(['-30', '', '', '0', '', '', '30'])
 
-      svg.append('g')
-        .attr('transform', `translate(${0.02 * width}, ${0.78 * height})`)
-        .call(legend)
-        .append('text')
-        .text('% Extra / Deficient Power')
-        .attr('transform', `translate(0, 50)`)
+    svg.append('g')
+      .attr('transform', `translate(${0.02 * width}, ${0.78 * height})`)
+      .call(legend)
+      .append('text')
+      .text('% Extra / Deficient Power')
+      .attr('transform', `translate(0, 50)`)
 
-      console.log(svg._groups[0][0].children[50])
+    console.log(svg._groups[0][0].children[50])
   }
 
   return svg
