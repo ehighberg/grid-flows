@@ -112,10 +112,9 @@
 | Component Hierarchy / Routing | H | 4 | 4 | |
 | Region / Data Type / Date Selection | H | 2 | 5 | |
 | Tabular Data Summary | H | 3 | 9 | |
-| Map Display | H | 6 | 11 | |
+| Map Display | H | 6 | 14 | |
 | Frame-by-frame Power Visual | M | 4 | | |
 | Animated Power Flows | M | 4 | | |
-| Predictive Power Modeling | L | 8 | | |
 | Total | H | 35 | 25.5 | |
 
 
@@ -135,7 +134,7 @@
 - Axios - API requests
 - React Router - URL-based conditional rendering
 - d3.js - Pretty map views
-- chroma - Color palettes
+- d3-scale-chromatic - Color palettes
 - dotenv - Hide API keys
 - Moment - Easier date handling
 

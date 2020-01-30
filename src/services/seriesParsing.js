@@ -5,16 +5,20 @@ export const extractValues = series => {
   return series.flat().filter((value, index) => index % 2 !== 0)
 }
 
-export const timeParseData = (series, startDate, endDate) => {
+export const timeParseSerieses = (serieses, startDate, endDate) => {
   const startTime = moment.parseZone(startDate)
   const endTime = moment.parseZone(endDate).add(23, 'hours')
 
-  const parsedSeries = Object.assign({}, series)
+  const parsedSerieses = Object.assign({}, serieses)
 
-  parsedSeries.data = series.data.filter(timeValPair => {
-    const parsedTime = moment.parseZone(timeValPair[0])
-    return ( (parsedTime >= startTime) && (parsedTime <= endTime) )
+  Object.keys(parsedSerieses).forEach(key => {
+    parsedSerieses[key].data = parsedSerieses[key].data.filter(
+      timeValPair => {
+        const parsedTime = moment.parseZone(timeValPair[0])
+        return ( (parsedTime >= startTime) && (parsedTime <= endTime) )
+      }
+    )
   })
 
-  return parsedSeries
+  return parsedSerieses
 }

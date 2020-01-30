@@ -17,10 +17,12 @@ const MapView = props => {
 
 
   useEffect(() => {
-    if (data && d3Container.current) {
+    if (d3Container.current) {
+      console.log('using effect')
+      console.log(data)
       projectMap(data, d3Container, props.settings)
     }
-  }, [data, props.settings])
+  }, [data, props])
 
 
   return (

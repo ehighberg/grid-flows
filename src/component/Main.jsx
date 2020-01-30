@@ -4,7 +4,7 @@ import moment from 'moment'
 
 
 import { makeSeriesDict } from '../services/api-helper'
-import { timeParseData } from '../services/seriesParsing'
+import { timeParseSerieses } from '../services/seriesParsing'
 
 
 import MapView from '../screens/MapView'
@@ -56,12 +56,12 @@ const Main = props => {
     )
   } else {
 
-    const parsedDemand = timeParseData(demandSeries[formValues.regionSelect],  formValues.startDate, formValues.endDate)
+    const allParsedDemand = timeParseSerieses(demandSeries, formValues.startDate, formValues.endDate)
 
-    const parsedSupply = supplySeries['All Regions'] ? timeParseData(supplySeries[formValues.regionSelect],  formValues.startDate, formValues.endDate) : {}
+    const allParsedSupply = supplySeries['All Regions'] ? timeParseSerieses(supplySeries,  formValues.startDate, formValues.endDate) : {}
 
-    console.log(parsedDemand)
-    console.log(parsedSupply)
+    console.log(allParsedDemand)
+    console.log(allParsedSupply)
 
     return (
       <main>
@@ -69,8 +69,8 @@ const Main = props => {
         <Route exact path='/'>
           <MapView
             settings={formValues}
-            Demand={parsedDemand}
-            Supply={ parsedSupply.series_id ? parsedSupply : {} }
+            Demand={allParsedDemand}
+            Supply={ allParsedSupply['All Regions'] ? allParsedSupply : {} }
           />
         </Route>
 
@@ -84,8 +84,8 @@ const Main = props => {
 
         <Summary
           settings={formValues}
-          Demand={parsedDemand}
-          Supply={ parsedSupply.series_id ? parsedSupply : {} }
+          Demand={allParsedDemand[formValues.regionSelect]}
+          Supply={allParsedSupply['All Regions'] ? allParsedSupply[formValues.regionSelect] : {}}
         />
       </main>
     )

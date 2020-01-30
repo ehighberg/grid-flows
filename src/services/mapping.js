@@ -9,14 +9,14 @@ const assignRegions = (states) => {
 }
 
 const onMouseover = function(statePath, svg) {
-  console.log(svg)
+  // console.log(svg)
   console.log(statePath)
-  console.log(statePath.getAttribute('region'))
+  // console.log(statePath.getAttribute('region'))
 
   svg.selectAll('path').filter((item) =>
     (item.region === statePath.getAttribute('region'))
     )
-    .style('fill', '#fff')
+    .style('fill', '#888')
 }
 
 const onMouseout = function(statePath, svg) {
@@ -32,8 +32,9 @@ const addEvents = (svg) => {
     .on('mouseout', function () {onMouseout(this, svg)})
 }
 
-export const projectMap = (data, d3Container, settings) => {
+export const projectMap = (ioData, d3Container, settings) => {
   // With much help from http://duspviz.mit.edu/d3-workshop/mapping-data-with-d3/ and http://bl.ocks.org/michellechandra/0b2ce4923dc9b5809922 and https://medium.com/@jeffbutsch/using-d3-in-react-with-hooks-4a6c61f1d102
+  console.log(ioData)
 
   const svg = d3.select(d3Container.current)
 
@@ -63,10 +64,24 @@ export const projectMap = (data, d3Container, settings) => {
     .attr('d', path)
     .attr('state', (d) => d.properties.name)
     .attr('region', (d) => d.region )
+    .attr('Demand', (d) => ioData.Demand[d.region].data[0][1])
+    .attr('Supply', 0)
     .style("stroke", "#fff")
     .style("stroke-width", "1")
 
   addEvents(svg)
+
+  if (ioData.Supply['All Regions']) {
+    svg.selectAll('path')
+      .attr('Supply', (d) => ioData.Supply[d.region].data[0][1])
+  }
+
+  const colorScale = d3.scaleSequential()
+    .domain([1, 10])
+    .interpolator(d3.interpolateViridis)
+
+  svg.selectAll('path')
+    .attr('fill', (d) => colorScale(d.Demand))
 
   return svg
 }

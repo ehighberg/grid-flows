@@ -16,7 +16,6 @@ const QuerySettings = props => {
         value={regionSelect}
         onChange={props.onChange}>
 
-        <option value={'All Regions'}>All Regions</option>
         {Object.keys(regionCodes).map((regionName, i) =>
           <option
             value={regionName}
