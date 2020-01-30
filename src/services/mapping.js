@@ -16,14 +16,14 @@ const onMouseover = function(statePath, svg) {
   svg.selectAll('path').filter((item) =>
     (item.region === statePath.getAttribute('region'))
     )
-    .style('fill', '#888')
+    .style('stroke-width', '3')
 }
 
 const onMouseout = function(statePath, svg) {
   svg.selectAll('path').filter((item) =>
     (item.region === statePath.getAttribute('region'))
     )
-    .style('fill', '#000')
+    .style('stroke-width', '1')
 }
 
 const addEvents = (svg) => {
@@ -74,14 +74,30 @@ export const projectMap = (ioData, d3Container, settings) => {
   if (ioData.Supply['All Regions']) {
     svg.selectAll('path')
       .attr('Supply', (d) => ioData.Supply[d.region].data[0][1])
+
+    const colorScale = d3.scaleSequential()
+      .domain([-0.3, 0.3])
+      .interpolator(d3.interpolateInferno)
+
+    console.log(colorScale)
+
+    svg.selectAll('path')
+      .attr('fill', (d) => {
+        // console.log(d)
+        // console.log(ioData.Demand[d.region].data[0][1])
+        // console.log(colorScale(ioData.Demand[d.region].data[0][1]))
+        const values = {
+          Supply: ioData.Supply[d.region].data[0][1],
+          Demand: ioData.Demand[d.region].data[0][1]
+        }
+
+        values.Net = values.Supply - values.Demand
+        console.log(values.Net / values.Demand)
+        return colorScale(values.Net / values.Demand)
+      })
   }
 
-  const colorScale = d3.scaleSequential()
-    .domain([1, 10])
-    .interpolator(d3.interpolateViridis)
 
-  svg.selectAll('path')
-    .attr('fill', (d) => colorScale(d.Demand))
 
   return svg
 }

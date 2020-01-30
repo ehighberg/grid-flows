@@ -71,6 +71,7 @@
 - Allow typed in dates
 - Convert stats functions to d3
 - Mobile version of mouseover / mouseout
+- Scale coloration based on power / population, or to net generation / supply or demand (extra setting)
 
 - Animation showing demand changing over time / geographic areas
 
@@ -112,7 +113,7 @@
 | Component Hierarchy / Routing | H | 4 | 4 | |
 | Region / Data Type / Date Selection | H | 2 | 5 | |
 | Tabular Data Summary | H | 3 | 9 | |
-| Map Display | H | 6 | 14 | |
+| Map Display | H | 6 | 17 | |
 | Frame-by-frame Power Visual | M | 4 | | |
 | Animated Power Flows | M | 4 | | |
 | Total | H | 35 | 25.5 | |
@@ -124,7 +125,7 @@
 |---|---| ---|
 |Jan 24th| Project Pitch / Wireframes / Priority Matrix / Component Hierarchy | Complete
 |Jan 27th| API calls, Render data summary | Complete
-|Jan 28th| Render Map (MVP) | Incomplete
+|Jan 28th| Render Map (MVP) | Complete
 |Jan 29th| Animated Power Flows | Incomplete
 |Jan 30th| Supply / Demand prediction | Incomplete
 |Jan 31st| Present | Incomplete
@@ -134,7 +135,6 @@
 - Axios - API requests
 - React Router - URL-based conditional rendering
 - d3.js - Pretty map views
-- d3-scale-chromatic - Color palettes
 - dotenv - Hide API keys
 - Moment - Easier date handling
 

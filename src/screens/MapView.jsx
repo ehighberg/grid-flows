@@ -22,7 +22,7 @@ const MapView = props => {
       console.log(data)
       projectMap(data, d3Container, props.settings)
     }
-  }, [data, props])
+  }, [data, props.settings])
 
 
   return (
