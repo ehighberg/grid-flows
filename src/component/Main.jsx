@@ -55,6 +55,8 @@ const Main = props => {
     )
   } else {
 
+    console.log('rendering main')
+
     const allParsedDemand = timeParseSerieses(demandSeries, formValues.startDate, formValues.endDate)
 
     const allParsedSupply = supplySeries['All Regions'] ? timeParseSerieses(supplySeries,  formValues.startDate, formValues.endDate) : {}

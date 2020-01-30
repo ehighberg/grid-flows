@@ -62,6 +62,11 @@ summary {
   bottom: 2.2em;
 }
 
+svg {
+  max-width: 1400px;
+  max-height: 880px;
+}
+
 .header-title {
   margin: 1vh auto 1vh 2vw;
 }
@@ -108,4 +113,13 @@ table.greenTable thead th {
 }
 table.greenTable thead th:first-child {
   border-left: none;
+}
+
+
+/* TESTING BREAKPOINT TO GET RID OF SCREEN FLICKER */
+
+@media (min-width:800px) {
+  footer, header {
+    background-color: var(--half-gray)
+  }
 }

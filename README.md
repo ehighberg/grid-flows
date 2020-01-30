@@ -63,10 +63,12 @@
 
 ### Post-MVP
 
+- Resize map for desktop
 - Legend
 - Animation showing demand changing over time / geographic areas
 - Tooltips
 - Move summaries to slugs
+- Restyle header/footer for desktop
 - Summary table links to explanations of those statistics
 - Smarter date parsing: only parse in an approximate range of the io array
 - Move calculations to web workers for greater responsiveness
@@ -139,7 +141,6 @@
 - d3.js - Pretty map views
 - dotenv - Hide API keys
 - Moment - Easier date handling
-- Radium - CSS breakpoints in JS
 
 (PMVP)
 - Stdlib-js - Data manipulation
