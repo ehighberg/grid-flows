@@ -17,7 +17,6 @@ a {
 }
 
 footer {
-  display: block;
   position: fixed;
   bottom: 0;
   background-color: var(--bg-one);
@@ -63,8 +62,8 @@ summary {
 }
 
 svg {
-  max-width: 1400px;
-  max-height: 880px;
+  max-width: 1350px;
+  max-height: 850px;
 }
 
 .header-title {
@@ -81,7 +80,7 @@ svg {
   margin: 0 0 1vh 0;
 }
 
-/* Made wit https://divtable.com/table-styler/ */
+/* Made with https://divtable.com/table-styler/ */
 table.greenTable {
   font-family: serif;
   border: 6px solid #24943A;
@@ -116,9 +115,46 @@ table.greenTable thead th:first-child {
 }
 
 
-/* TESTING BREAKPOINT TO GET RID OF SCREEN FLICKER */
-
 @media (min-width:800px) {
+  footer {
+    height: 6vh;
+    font-size: 1.5em;
+    justify-content: center;
+  }
+
+  footer * {
+    margin: 0 1vw;
+  }
+
+  footer a {
+    margin-top: 0.3vh;
+  }
+
+  header {
+    grid-template-columns: repeat(6, 1fr);
+    height: 6vh;
+  }
+
+  header h3 {
+    grid-column: 3 / 3;
+    font-size: 2em;
+  }
+
+  nav {
+    grid-column: 4 / 4;
+    font-size: 1.5em;
+  }
+
+  summary {
+    bottom: 7vh;
+  }
+
+  .fa {
+    font-size: 1.8em;
+  }
+
+
+  /* TESTING BREAKPOINT TO GET RID OF SCREEN FLICKER */
   footer, header {
     background-color: var(--half-gray)
   }
