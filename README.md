@@ -63,12 +63,10 @@
 
 ### Post-MVP
 
-- Resize map for desktop
 - Legend
 - Animation showing demand changing over time / geographic areas
 - Tooltips
 - Move summaries to slugs
-- Restyle header/footer for desktop
 - Summary table links to explanations of those statistics
 - Smarter date parsing: only parse in an approximate range of the io array
 - Move calculations to web workers for greater responsiveness
@@ -77,6 +75,7 @@
 - Mobile version of mouseover / mouseout
 - Scale coloration based on power / population, or to net generation / supply or demand (extra settings)
 - Infer missing timestamps
+- Desktop contact icons under name
 
 
 - Demand forecasting model and predictions
@@ -117,9 +116,8 @@
 | Component Hierarchy / Routing | H | 4 | 4 | |
 | Region / Data Type / Date Selection | H | 2 | 5 | |
 | Tabular Data Summary | H | 3 | 9 | |
-| Map Display | H | 6 | 17 | |
+| Map Display | H | 6 | 20 | |
 | Frame-by-frame Power Visual | M | 4 | | |
-| Animated Power Flows | M | 4 | | |
 | Total | H | 35 | 25.5 | |
 
 
@@ -141,6 +139,7 @@
 - d3.js - Pretty map views
 - dotenv - Hide API keys
 - Moment - Easier date handling
+- d3-legend - Simple legends in d3
 
 (PMVP)
 - Stdlib-js - Data manipulation
@@ -177,3 +176,4 @@ function reverse(string) {
 - [2020-01-25]: Loading all API results on initial page landing.
 - [2020-01-26]: Using Stdlib-js, Math.js for data wrangling.
 - [2020-01-29]: Removed stdlib, Math. Moved charts to PMVP.
+- [2020-01-30]: Removed flowing power from timeline

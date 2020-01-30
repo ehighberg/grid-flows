@@ -1,4 +1,6 @@
 import * as d3 from 'd3'
+import * as d3Legend from 'd3-svg-legend'
+
 import { stateLines, stateRegions } from '../data/us-states'
 
 
@@ -93,9 +95,23 @@ export const projectMap = (ioData, d3Container, settings) => {
         console.log(values.Net / values.Demand)
         return colorScale(values.Net / values.Demand)
       })
+
+      const legend = d3Legend.legendColor()
+        .scale(colorScale)
+        .cells(7)
+        .orient('horizontal')
+        .shapePadding(0)
+        .labels(['-30', '', '', '0', '', '', '30'])
+
+      svg.append('g')
+        .attr('transform', `translate(${0.02 * width}, ${0.78 * height})`)
+        .call(legend)
+        .append('text')
+        .text('% Extra / Deficient Power')
+        .attr('transform', `translate(0, 50)`)
+
+      console.log(svg._groups[0][0].children[50])
   }
-
-
 
   return svg
 }

@@ -61,6 +61,12 @@ summary {
   bottom: 2.2em;
 }
 
+text {
+  font-size: 0.8em;
+  position: absolute;
+  bottom: 50%;
+}
+
 svg {
   max-width: 1350px;
   max-height: 850px;
@@ -114,8 +120,23 @@ table.greenTable thead th:first-child {
   border-left: none;
 }
 
+@media (max-height:700px) {
+  summary {
+    left: 4.5vw;
+  }
 
-@media (min-width:800px) {
+  table.greenTable tbody td {
+    font-size: 0.7em;
+  }
+
+  table.greenTable thead th {
+    font-size: 1.1em;
+    font-weight: normal;
+  }
+}
+
+
+@media (min-width:900px) {
   footer {
     height: 6vh;
     font-size: 1.5em;
@@ -147,12 +168,12 @@ table.greenTable thead th:first-child {
 
   summary {
     bottom: 7vh;
+    right: 1vw;
   }
 
   .fa {
     font-size: 1.8em;
   }
-
 
   /* TESTING BREAKPOINT TO GET RID OF SCREEN FLICKER */
   footer, header {
